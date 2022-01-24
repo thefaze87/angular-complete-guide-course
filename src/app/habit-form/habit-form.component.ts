@@ -10,6 +10,16 @@ import { FormBuilder } from '@angular/forms';
     </form>
   `,
   styles: [
+    `
+    button {
+      background-color: blue;
+      border-radius:4px;
+      color: white;
+      font-size: 14px;
+      border: none;
+      outline: none;
+    }
+    `
   ]
 })
 export class HabitFormComponent implements OnInit {
