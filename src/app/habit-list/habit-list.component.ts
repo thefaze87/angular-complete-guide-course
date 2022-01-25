@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators';
-import { Habit } from '../habit';
+import { switchMap } from 'rxjs/operators';
 import { HabitService } from '../habit.service';
+import { Habit } from '../habit';
 
 @Component({
   selector: 'app-habit-list',
   template: `
     <h2>Habits</h2>
     <app-habit-form (addHabit) = "onAddHabit($event)" ></app-habit-form>
-  
     <ul>
       <app-habit-item 
         *ngFor="let habit of habits | async" 
@@ -26,18 +25,15 @@ import { HabitService } from '../habit.service';
 export class HabitListComponent implements OnInit {
   habits!: Observable<Habit[]>;
 
-  constructor(private habitService: HabitService) { }
-  
+  constructor(private habitService: HabitService) {}
+
   ngOnInit(): void {
-    this.habits = this.habitService.getHabits().pipe(map(habits => {
-      return habits.map(habit => {
-        habit.streak = habit.count > 5 ? true : false;
-        return habit;
-      });
-    }));
+    this.habits = this.habitService.refetch.pipe(
+      switchMap(() => this.habitService.getHabits())
+    );
   }
 
-  onAddHabit(newHabit) {
-    this.habitService.addHabit(newHabit);
+  onAddHabit(newHabit: Habit) {
+    this.habitService.addHabit(newHabit).subscribe();
   }
 }

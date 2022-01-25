@@ -10,6 +10,12 @@ import { HabitItemComponent } from './habit-item/habit-item.component';
 import { HabitFormComponent } from './habit-form/habit-form.component';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   declarations: [
     AppComponent,
     HabitListComponent,
@@ -17,7 +23,6 @@ import { HabitFormComponent } from './habit-form/habit-form.component';
     HabitItemComponent,
     HabitFormComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule ],
   providers: [],
   bootstrap: [AppComponent]
 })
