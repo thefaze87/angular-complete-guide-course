@@ -12,10 +12,12 @@ import { HabitFormComponent } from './habit-form/habit-form.component';
 import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
 import { MyhabitsComponent } from './myhabits/myhabits.component';
+import { AccountDetailComponent } from './account-detail/account-detail.component';
 
 const routes: Routes = [
   { path: 'site', component: HomeComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'account/:id', component: AccountDetailComponent },
   { path: 'habits', component: MyhabitsComponent },
   {path: '', redirectTo: '/site', pathMatch: 'full'}
 ];
@@ -36,7 +38,8 @@ const routes: Routes = [
     HabitFormComponent,
     HomeComponent,
     AccountComponent,
-    MyhabitsComponent
+    MyhabitsComponent,
+    AccountDetailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
