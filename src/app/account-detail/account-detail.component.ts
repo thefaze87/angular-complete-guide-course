@@ -6,6 +6,10 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   template: `
     <p>Account Details</p>
     <p>Account ID: {{ id }}</p>
+    <ul>
+      <li><a class="nav-link" routerLinkActive="active" routerLink="settings">Settings</a></li>
+      <li><a class="nav-link" routerLinkActive="active" routerLink="profile">Profile</a></li>
+    </ul>
   `,
   styles: [
   ]

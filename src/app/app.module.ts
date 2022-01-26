@@ -13,11 +13,26 @@ import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
 import { MyhabitsComponent } from './myhabits/myhabits.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'site', component: HomeComponent },
   { path: 'account', component: AccountComponent },
-  { path: 'account/:id', component: AccountDetailComponent },
+  {
+    path: 'account/:id',
+    component: AccountDetailComponent,
+    children: [
+      {
+        path: 'settings',
+        component: SettingsComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
+      }
+    ]
+  },
   { path: 'habits', component: MyhabitsComponent },
   {path: '', redirectTo: '/site', pathMatch: 'full'}
 ];
@@ -39,7 +54,8 @@ const routes: Routes = [
     HomeComponent,
     AccountComponent,
     MyhabitsComponent,
-    AccountDetailComponent
+    AccountDetailComponent,
+    ProfileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
