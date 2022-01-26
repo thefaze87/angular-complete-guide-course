@@ -24,10 +24,16 @@ const routes: Routes = [
   {
    path: 'system/:id',
     component: SystemDetailComponent,
+    data: { 
+      isAwesome: true
+    },
     children: [
       {
         path: 'info',
-        component: SystemInfoComponent
+        component: SystemInfoComponent,
+        data: { 
+          isAwesome: false
+        },
       },
       {
         path: 'items',
@@ -61,7 +67,11 @@ const routes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,
+      {
+        paramsInheritanceStrategy: 'always'
+      }
+    )
   ],
   declarations: [
     AppComponent,

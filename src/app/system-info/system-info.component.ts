@@ -17,7 +17,7 @@ export class SystemInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.parent?.paramMap
+    this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
           this.id = Number(params.get("id"));
