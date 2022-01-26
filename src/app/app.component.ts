@@ -11,8 +11,9 @@ import { Component } from '@angular/core';
       <li><a routerLink="/habits">My Habit Tracker</a></li>
     </ul>
   </nav>
-   <!-- Used to route --> 
-   <router-outlet></router-outlet>
+   <h1>Welcome to Camping Planner 🏕</h1>
+  <app-nav-bar></app-nav-bar>
+  <router-outlet></router-outlet>
    
   `,
   styles: []
